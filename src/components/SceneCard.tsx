@@ -6,6 +6,7 @@ interface SceneCardProps {
   scene: SceneData;
   isActive: boolean;
   userAnswer?: number;
+  accentColor?: string;
   onPlayTimestamp: (seconds: number, title: string, timeRange: string, sceneId: number) => void;
   onCheckAnswer: (sceneId: number, selectedOption: number) => void;
 }
@@ -14,25 +15,35 @@ export const SceneCard: React.FC<SceneCardProps> = ({
   scene,
   isActive,
   userAnswer,
+  accentColor = '#f59e0b',
   onPlayTimestamp,
   onCheckAnswer,
 }) => {
   const isAnswered = userAnswer !== undefined;
   const isCorrect = isAnswered && userAnswer === scene.correctAnswer;
+  const isEmerald = accentColor === '#10b981';
 
   return (
     <div
       id={`scene-${scene.id}`}
       className={`scene-card bg-[#1e293b] border rounded-2xl p-5 sm:p-6 transition-all duration-300 ${
         isActive
-          ? 'active border-[#f59e0b] shadow-[0_0_20px_rgba(245,158,11,0.25)] ring-1 ring-[#f59e0b]/50'
+          ? isEmerald
+            ? 'active border-emerald-400 shadow-[0_0_20px_rgba(16,185,129,0.25)] ring-1 ring-emerald-400/50'
+            : 'active border-[#f59e0b] shadow-[0_0_20px_rgba(245,158,11,0.25)] ring-1 ring-[#f59e0b]/50'
           : 'border-slate-700 hover:border-slate-600 shadow-md'
       }`}
     >
       {/* Scene Header */}
       <div className="scene-header flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
         <div className="flex items-center gap-2 flex-wrap">
-          <span className="scene-number bg-[#f59e0b]/15 text-[#f59e0b] px-2.5 py-1 rounded-md text-xs font-bold tracking-wider border border-[#f59e0b]/30">
+          <span
+            className={`scene-number px-2.5 py-1 rounded-md text-xs font-bold tracking-wider border ${
+              isEmerald
+                ? 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30'
+                : 'bg-[#f59e0b]/15 text-[#f59e0b] border-[#f59e0b]/30'
+            }`}
+          >
             {scene.sceneNumber}
           </span>
           {isAnswered && (
@@ -94,11 +105,11 @@ export const SceneCard: React.FC<SceneCardProps> = ({
               scene.id
             )
           }
-          className={`play-btn inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs sm:text-sm font-bold transition-colors cursor-pointer ${
-            isActive
-              ? 'bg-[#f59e0b] hover:bg-[#d97706] text-slate-950 shadow-md ring-2 ring-white/30'
-              : 'bg-[#f59e0b] hover:bg-[#d97706] text-slate-950'
-          }`}
+          className={`play-btn inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs sm:text-sm font-bold transition-colors cursor-pointer text-slate-950 ${
+            isEmerald
+              ? 'bg-emerald-400 hover:bg-emerald-500'
+              : 'bg-[#f59e0b] hover:bg-[#d97706]'
+          } ${isActive ? 'shadow-md ring-2 ring-white/30' : ''}`}
         >
           <Play className="w-3.5 h-3.5 fill-current" />
           <span>플레이어로 보기</span>
@@ -118,7 +129,13 @@ export const SceneCard: React.FC<SceneCardProps> = ({
       {/* Quiz Section */}
       <div className="quiz-box bg-slate-950/60 rounded-xl p-4 sm:p-5 border border-slate-800/80">
         <div className="quiz-question font-semibold text-sm sm:text-base text-slate-100 mb-3 leading-relaxed flex items-start gap-2">
-          <span className="text-amber-400 font-bold shrink-0">Q.</span>
+          <span
+            className={`font-bold shrink-0 ${
+              isEmerald ? 'text-emerald-400' : 'text-amber-400'
+            }`}
+          >
+            Q.
+          </span>
           <span>{scene.question.replace(/^Q\d+\.\s*/, '')}</span>
         </div>
 
@@ -127,20 +144,20 @@ export const SceneCard: React.FC<SceneCardProps> = ({
             const isSelected = userAnswer === optIdx;
             const isCorrectOption = optIdx === scene.correctAnswer;
 
-            let buttonStyle =
-              'bg-slate-800/60 border-slate-700 text-slate-200 hover:bg-[#f59e0b]/10 hover:border-[#f59e0b]/60 hover:text-white';
+            let buttonStyle = isEmerald
+              ? 'bg-slate-800/60 border-slate-700 text-slate-200 hover:bg-emerald-500/10 hover:border-emerald-500/60 hover:text-white'
+              : 'bg-slate-800/60 border-slate-700 text-slate-200 hover:bg-[#f59e0b]/10 hover:border-[#f59e0b]/60 hover:text-white';
 
             if (isAnswered) {
               if (isCorrectOption) {
-                // Correct option (highlight green)
                 buttonStyle =
                   'correct bg-emerald-950/70 border-emerald-500 text-emerald-300 font-semibold shadow-[0_0_10px_rgba(16,185,129,0.2)]';
               } else if (isSelected && !isCorrect) {
-                // User selected wrong option (highlight red)
                 buttonStyle =
                   'incorrect bg-rose-950/70 border-rose-500 text-rose-300 font-medium';
               } else {
-                buttonStyle = 'bg-slate-900/40 border-slate-800/80 text-slate-500 opacity-60';
+                buttonStyle =
+                  'bg-slate-900/40 border-slate-800/80 text-slate-500 opacity-60';
               }
             }
 
@@ -170,9 +187,15 @@ export const SceneCard: React.FC<SceneCardProps> = ({
         {isAnswered && (
           <div
             id={`exp-${scene.id}`}
-            className="explanation visible mt-4 p-3.5 rounded-lg text-xs sm:text-sm bg-slate-900/90 border-l-4 border-[#f59e0b] border border-slate-800 text-slate-200 space-y-1.5"
+            className={`explanation visible mt-4 p-3.5 rounded-lg text-xs sm:text-sm bg-slate-900/90 border-l-4 ${
+              isEmerald ? 'border-emerald-400' : 'border-[#f59e0b]'
+            } border border-slate-800 text-slate-200 space-y-1.5`}
           >
-            <div className="flex items-center gap-1.5 text-amber-400 font-bold text-xs">
+            <div
+              className={`flex items-center gap-1.5 font-bold text-xs ${
+                isEmerald ? 'text-emerald-400' : 'text-amber-400'
+              }`}
+            >
               <Lightbulb className="w-3.5 h-3.5" />
               <span>정답 해설</span>
             </div>

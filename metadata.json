@@ -1,6 +1,6 @@
 {
   "name": "주몽 신화 40분 핵심요약 & 퀴즈 학습관",
-  "description": "주몽 신화 핵심 요약 영상 구간 시청 및 타임라인 연동 퀴즈 학습관",
+  "description": "주몽의 고구려 건국 및 온조왕의 백제 건국 설화 타임라인 연동 영상 시청 및 퀴즈 학습관",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

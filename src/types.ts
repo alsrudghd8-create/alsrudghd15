@@ -1,3 +1,5 @@
+export type KingdomType = 'goguryeo' | 'baekje';
+
 export interface SceneData {
   id: number;
   sceneNumber: string;
@@ -12,6 +14,17 @@ export interface SceneData {
   explanation: string;
   historicalContext?: string;
   characterTags?: string[];
+}
+
+export interface KingdomInfo {
+  id: KingdomType;
+  name: string;
+  subtitle: string;
+  badge: string;
+  videoId: string;
+  videoTitle: string;
+  accentColor: string;
+  scenes: SceneData[];
 }
 
 export interface ActivePlayingInfo {

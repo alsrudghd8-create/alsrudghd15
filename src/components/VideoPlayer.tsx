@@ -1,32 +1,37 @@
 import React from 'react';
 import { ActivePlayingInfo } from '../types';
-import { YOUTUBE_VIDEO_ID } from '../data/scenes';
-import { Play, ExternalLink, ChevronLeft, ChevronRight, Clock, Info } from 'lucide-react';
+import { ExternalLink, ChevronLeft, ChevronRight, Clock, Info } from 'lucide-react';
 
 interface VideoPlayerProps {
+  videoId: string;
   currentVideo: ActivePlayingInfo;
   onPrevScene?: () => void;
   onNextScene?: () => void;
   hasPrevScene: boolean;
   hasNextScene: boolean;
+  accentColor?: string;
 }
 
 export const VideoPlayer: React.FC<VideoPlayerProps> = ({
+  videoId,
   currentVideo,
   onPrevScene,
   onNextScene,
   hasPrevScene,
   hasNextScene,
+  accentColor = '#f59e0b',
 }) => {
   const embedUrl =
     currentVideo.seconds > 0
-      ? `https://www.youtube.com/embed/${YOUTUBE_VIDEO_ID}?start=${currentVideo.seconds}&autoplay=1&enablejsapi=1`
-      : `https://www.youtube.com/embed/${YOUTUBE_VIDEO_ID}?enablejsapi=1`;
+      ? `https://www.youtube.com/embed/${videoId}?start=${currentVideo.seconds}&autoplay=1&enablejsapi=1`
+      : `https://www.youtube.com/embed/${videoId}?enablejsapi=1`;
 
   const externalUrl =
     currentVideo.seconds > 0
-      ? `https://youtu.be/${YOUTUBE_VIDEO_ID}?t=${currentVideo.seconds}`
-      : `https://youtu.be/${YOUTUBE_VIDEO_ID}`;
+      ? `https://youtu.be/${videoId}?t=${currentVideo.seconds}`
+      : `https://youtu.be/${videoId}`;
+
+  const isEmerald = accentColor === '#10b981';
 
   return (
     <div id="video-section" className="video-section sticky top-5 z-20">
@@ -34,9 +39,9 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
       <div className="relative pt-[56.25%] rounded-xl overflow-hidden shadow-[0_20px_25px_-5px_rgba(0,0,0,0.6)] border border-slate-700 bg-black">
         <iframe
           id="ytPlayer"
-          key={embedUrl}
+          key={`${videoId}-${currentVideo.seconds}`}
           src={embedUrl}
-          title="주몽 신화 요약 영상 플레이어"
+          title="신화 및 역사 요약 영상 플레이어"
           className="absolute top-0 left-0 w-full h-full border-0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowFullScreen
@@ -50,14 +55,22 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
       >
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0 flex-1">
-            <div className="flex items-center gap-1.5 text-xs text-amber-400 font-semibold mb-1">
-              <span className="inline-block w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
-              <span>현재 타임라인</span>
+            <div className="flex items-center gap-1.5 text-xs font-semibold mb-1">
+              <span
+                className={`inline-block w-2 h-2 rounded-full animate-pulse ${
+                  isEmerald ? 'bg-emerald-400' : 'bg-amber-400'
+                }`}
+              />
+              <span className={isEmerald ? 'text-emerald-400' : 'text-amber-400'}>
+                현재 타임라인
+              </span>
             </div>
 
             <h3
               id="nowPlayingTitle"
-              className="text-[#f59e0b] font-bold text-base sm:text-lg leading-snug truncate"
+              className={`font-bold text-base sm:text-lg leading-snug truncate transition-colors ${
+                isEmerald ? 'text-emerald-300' : 'text-[#f59e0b]'
+              }`}
               title={currentVideo.title}
             >
               {currentVideo.title}
@@ -76,7 +89,11 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
             href={externalUrl}
             target="_blank"
             rel="noreferrer"
-            className="shrink-0 p-2 text-slate-400 hover:text-amber-400 hover:bg-slate-700/60 rounded-lg border border-slate-700 transition-colors"
+            className={`shrink-0 p-2 text-slate-400 rounded-lg border border-slate-700 transition-colors ${
+              isEmerald
+                ? 'hover:text-emerald-400 hover:bg-emerald-950/40'
+                : 'hover:text-amber-400 hover:bg-slate-700/60'
+            }`}
             title="유튜브 앱/새 탭에서 열기"
           >
             <ExternalLink className="w-4 h-4" />

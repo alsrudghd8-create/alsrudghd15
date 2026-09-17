@@ -1,8 +1,9 @@
-import { SceneData } from '../types';
+import { KingdomInfo, KingdomType, SceneData } from '../types';
 
-export const YOUTUBE_VIDEO_ID = 'YG0D2yF6IL8';
+export const GOGURYEO_VIDEO_ID = 'YG0D2yF6IL8';
+export const BAEKJE_VIDEO_ID = 'UBh_KHmvaDM';
 
-export const SCENES: SceneData[] = [
+export const GOGURYEO_SCENES: SceneData[] = [
   {
     id: 1,
     sceneNumber: 'SCENE 01',
@@ -130,3 +131,159 @@ export const SCENES: SceneData[] = [
     characterTags: ['동명성왕', '유리왕 (태자)', '황룡'],
   },
 ];
+
+export const BAEKJE_SCENES: SceneData[] = [
+  {
+    id: 1,
+    sceneNumber: 'SCENE 01',
+    title: '유리의 등장 & 소서노와 두 왕자의 남하 결단',
+    duration: '⏱️ 00:00 ~ 12:30 (12분)',
+    timestampSeconds: 0,
+    timeRangeText: '00:00 ~ 12:30',
+    ytLink: 'https://youtu.be/UBh_KHmvaDM?t=0',
+    question: 'Q1. 주몽이 부여에서 낳은 유리왕자가 징표를 들고 찾아왔을 때, 소서노와 비류·온조가 남쪽으로 내려가기로 결심한 결정적 이유는?',
+    options: [
+      '① 유리가 태자로 책봉되자 왕위 계승 갈등을 피하고 새 나라를 열기 위해',
+      '② 동부여의 대소왕이 대군을 이끌고 고구려를 전격 침공해서',
+      '③ 한나라의 위협을 피해 남쪽의 마한으로 피난하기 위해',
+      '④ 주몽이 소서노 일가를 고구려에서 강제로 추방했기 때문에',
+    ],
+    correctAnswer: 0,
+    explanation:
+      '💡 정답: ① 유리가 태자로 책봉되자 왕위 계승 갈등을 피하고 새 나라를 열기 위해\n유리가 태자가 되자, 소서노와 비류, 온조는 신하들과 백성들을 이끌고 남하하여 한강 유역에서 새로운 국가를 건국할 것을 결단했습니다.',
+    historicalContext: '고구려 건국의 일등공신 소서노와 두 왕자의 남하 및 한성백제의 출발점',
+    characterTags: ['소서노', '온조왕', '비류', '유리태자'],
+  },
+  {
+    id: 2,
+    sceneNumber: 'SCENE 02',
+    title: '미추홀과 위례성의 선택 & 비류의 비극',
+    duration: '⏱️ 16:50 ~ 26:10 (9분)',
+    timestampSeconds: 1010,
+    timeRangeText: '16:50 ~ 26:10',
+    ytLink: 'https://youtu.be/UBh_KHmvaDM?t=1010',
+    question: "Q2. 형 비류가 바닷가인 '미추홀(현 인천)'에 도읍을 정했으나 정착에 실패하고 후회한 주된 원인은?",
+    options: [
+      '① 고구려 추격군의 기습 공격으로 성이 함락되어서',
+      '② 땅이 습하고 바닷물이 짜서 농사짓고 마실 물을 얻기 어려웠기 때문에',
+      '③ 낙랑군의 거듭된 약탈과 해적들의 침략 때문',
+      '④ 말갈족이 바다를 건너와 미추홀을 완전히 포위해서',
+    ],
+    correctAnswer: 1,
+    explanation:
+      '💡 정답: ② 땅이 습하고 바닷물이 짜서 농사짓고 마실 물을 얻기 어려웠기 때문에\n미추홀은 땅이 짜고 습해 백성들이 살기 어려웠던 반면, 온조의 하남 위례성은 비옥한 평야와 강이 있어 백성들이 평안했습니다. 비류는 부끄러움과 후회 끝에 세상을 떠났고 비류의 백성들은 온조에게 귀부했습니다.',
+    historicalContext: '해양 기반(미추홀)과 한강 농경 평야(위례성)의 입지 선택과 백성들의 이동',
+    characterTags: ['비류', '온조', '미추홀 (인천)', '위례성 (하남)'],
+  },
+  {
+    id: 3,
+    sceneNumber: 'SCENE 03',
+    title: "국호의 변화: '십제(十濟)'에서 '백제(百濟)'로",
+    duration: '⏱️ 26:10 ~ 34:42 (8분)',
+    timestampSeconds: 1570,
+    timeRangeText: '26:10 ~ 34:42',
+    ytLink: 'https://youtu.be/UBh_KHmvaDM?t=1570',
+    question: "Q3. 온조왕이 처음 나라 이름을 '십제(十濟)'로 지었다가 비류의 백성들을 통합한 후 '백제(百濟)'로 바꾼 어원적 의미는?",
+    options: [
+      '① 백 개의 성을 모두 함락시켰다는 뜻',
+      '② 백 명의 무예 뛰어난 장수가 바다를 건너왔다는 의미',
+      '③ 온 백성이 즐겨 따르고(백가낙종 百家樂從), 많은 사람이 바다를 건너 나라를 부흥시켰다는 뜻',
+      '④ 백 년 동안 번영할 영원한 제국이라는 뜻',
+    ],
+    correctAnswer: 2,
+    explanation:
+      '💡 정답: ③ 온 백성이 즐겨 따르고, 많은 사람이 바다를 건너 나라를 부흥시켰다는 뜻\n처음에는 10명의 신하와 함께 건국하여 십제라 불렀으나, 비류의 백성들까지 기쁘게 따르자(백가낙종 百家樂從, 백가제해 百家濟海) 국호를 백제(百濟)로 개칭하였습니다.',
+    historicalContext: '삼국사기 백제본기 온조왕 원년 조의 기록과 백제 국호의 탄생',
+    characterTags: ['온조왕', '십제(十濟)', '백제(百濟)', '오간과 마려'],
+  },
+  {
+    id: 4,
+    sceneNumber: 'SCENE 04',
+    title: '말갈의 침입 격퇴 & 소서노의 서거',
+    duration: '⏱️ 34:42 ~ 44:10 (9분)',
+    timestampSeconds: 2082,
+    timeRangeText: '34:42 ~ 44:10',
+    ytLink: 'https://youtu.be/UBh_KHmvaDM?t=2082',
+    question: 'Q4. 초기 백제를 북방에서 끊임없이 위협하던 북방 유목 기마 세력으로, 온조왕이 군사를 정비해 칠중하(七重河) 등에서 맞서 싸운 종족은?',
+    options: [
+      '① 왜구',
+      '② 말갈(靺鞨)',
+      '③ 흉노',
+      '④ 선비',
+    ],
+    correctAnswer: 1,
+    explanation:
+      '💡 정답: ② 말갈(靺鞨)\n초기 백제는 북방 말갈족의 잦은 국경 침입을 방어해야 했습니다. 온조왕은 목책을 세우고 군사를 정비해 말갈을 격퇴하며 국경 방어선을 굳혔습니다.',
+    historicalContext: '칠중하 전투와 국경 목책 수축, 그리고 백제 건국의 정신적 지주 소서노의 서거',
+    characterTags: ['온조왕', '말갈족', '칠중하', '소서노'],
+  },
+  {
+    id: 5,
+    sceneNumber: 'SCENE 05',
+    title: '하남 위례성 천도 & 농경과 양잠 장려',
+    duration: '⏱️ 44:10 ~ 52:47 (8분)',
+    timestampSeconds: 2650,
+    timeRangeText: '44:10 ~ 52:47',
+    ytLink: 'https://youtu.be/UBh_KHmvaDM?t=2650',
+    question: 'Q5. 온조왕 13년, 한수(한강) 이남의 하남 위례성으로 천도하며 백성들의 민생 안정을 위해 적극 장려한 산업은?',
+    options: [
+      '① 해상 무역과 약탈',
+      '② 농경(農耕)과 누에치기(양잠 養蠶)',
+      '③ 청동 거울과 칠지도 대량 수출',
+      '④ 황금 채굴과 보석 세공업',
+    ],
+    correctAnswer: 1,
+    explanation:
+      '💡 정답: ② 농경과 누에치기(양잠)\n온조왕은 한강 이남으로 천도한 뒤 궁궐을 "검소하지만 누추하지 않고, 화려하지만 사치스럽지 않게(검이불루 화이불치 儉而不陋 華而不侈)" 짓고, 농경과 양잠을 장려해 태평성대의 기틀을 마련했습니다.',
+    historicalContext: "'검이불루 화이불치' 백제 미학의 효시와 풍납토성·몽촌토성의 한성 도읍기",
+    characterTags: ['온조왕', '하남 위례성', '풍납토성/몽촌토성', '농경과 양잠'],
+  },
+  {
+    id: 6,
+    sceneNumber: 'SCENE 06',
+    title: '마한 병합 & 700년 백제 왕조의 기틀 완성',
+    duration: '⏱️ 52:47 ~ 01:05:00 (12분)',
+    timestampSeconds: 3167,
+    timeRangeText: '52:47 ~ 01:05:00',
+    ytLink: 'https://youtu.be/UBh_KHmvaDM?t=3167',
+    question: 'Q6. 온조왕이 한강 유역을 확고히 장악한 후, 남방의 소국 연맹체인 이 세력을 전격 합병하여 강력한 고대 국가로 발돋움한 대상은?',
+    options: [
+      '① 마한(馬韓)',
+      '② 진한(辰韓)',
+      '③ 변한(弁韓)',
+      '④ 탐라국(耽羅)',
+    ],
+    correctAnswer: 0,
+    explanation:
+      '💡 정답: ① 마한(馬韓)\n온조왕은 초기 마한에 사신을 보내 화친했으나, 국력이 강성해지자 사냥을 구실로 군사를 일으켜 마한을 병합하고 700년 백제 대왕조의 기틀을 확립했습니다.',
+    historicalContext: '마한의 복속과 백제의 영역 확장, 을음 장군의 활약과 온조왕 46년의 위대한 치세',
+    characterTags: ['온조왕', '을음 장군', '마한 연맹체', '백제 왕국'],
+  },
+];
+
+export const KINGDOMS: Record<KingdomType, KingdomInfo> = {
+  goguryeo: {
+    id: 'goguryeo',
+    name: '고구려',
+    subtitle: '주몽 신화 40분 핵심요약 & 퀴즈 학습관',
+    badge: '삼국사기 고구려 본기 · 동명성왕 건국 설화',
+    videoId: GOGURYEO_VIDEO_ID,
+    videoTitle: '주몽 신화 핵심요약',
+    accentColor: '#f59e0b',
+    scenes: GOGURYEO_SCENES,
+  },
+  baekje: {
+    id: 'baekje',
+    name: '백제',
+    subtitle: '온조왕 건국 & 700년 백제 기틀 핵심요약 학습관',
+    badge: '삼국사기 백제 본기 · 온조왕 건국 및 위례성 설화',
+    videoId: BAEKJE_VIDEO_ID,
+    videoTitle: '온조왕 백제 건국 오디오북 핵심요약',
+    accentColor: '#10b981',
+    scenes: BAEKJE_SCENES,
+  },
+};
+
+// Backward-compatible exports
+export const YOUTUBE_VIDEO_ID = GOGURYEO_VIDEO_ID;
+export const SCENES = GOGURYEO_SCENES;
