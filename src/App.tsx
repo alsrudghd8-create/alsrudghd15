@@ -4,6 +4,7 @@
  */
 
 import { useState } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import { KINGDOMS } from './data/scenes';
 import { ActivePlayingInfo, KingdomType, UserAnswers } from './types';
 import { Header } from './components/Header';
@@ -181,6 +182,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#0f172a] text-[#f8fafc] flex flex-col selection:bg-[#f59e0b]/30 selection:text-[#f59e0b]">
+      <Analytics />
       {/* Top Header with Kingdom Switcher */}
       <Header
         currentKingdom={currentKingdom}
@@ -221,7 +223,7 @@ export default function App() {
                 </span>
               </div>
               <span className="text-xs text-slate-400 font-medium">
-                완료 {currentProgress.answeredCount}/{currentScenes.length}
+                ���료 {currentProgress.answeredCount}/{currentScenes.length}
               </span>
             </div>
 
